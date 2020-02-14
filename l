@@ -277,12 +277,12 @@ function banner
 {
 	check_wlans
 	echo -e ""
-	echo -e "$COL         ██╗      █████╗ ███████╗██╗   ██╗$CE v$VERSION"
-	echo -e "$COL         ██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝$CE"
-	echo -e "$COL         ██║     ███████║  ███╔╝  ╚████╔╝ $CE   by "$COL"ARIS MELACHROINOS$CE"
-	echo -e "$COL         ██║     ██╔══██║ ███╔╝    ╚██╔╝  $CE"
-	echo -e "$COL    The  ███████╗██║  ██║███████╗   ██║  script$CE"
-	echo -e "$COL         ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝   $CE"
+	echo -e "$COL        ██████╗ ██████╗ ███╗   ██╗████████╗██████╗  ██████╗ ██╗     $CE v$VERSION"
+        echo -e "$COL       ██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔══██╗██╔═══██╗██║     $CE"
+        echo -e "$COL       ██║     ██║   ██║██╔██╗ ██║   ██║   ██████╔╝██║   ██║██║     $CE By "$COL"Thisas_Ranhiru_Samaraweera$CE"
+        echo -e "$COL       ██║     ██║   ██║██║╚██╗██║   ██║   ██╔══██╗██║   ██║██║     $CE"
+        echo -e "$COL       ╚██████╗╚██████╔╝██║ ╚████║   ██║   ██║  ██║╚██████╔╝███████╗$CE"
+        echo -e "$COL   The  ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚══════╝ Script$CE"
 	echo -e ""$YS"if"$CE") Ifconfig           "$YS"l"$CE") Local IPs & gateways "$RS"|"$CE"  "$YS"scan"$CE") Arp-scan network"
 	if [[ "$WLANCHECKING" = "" ]]
 	then
