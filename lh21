@@ -1,6 +1,6 @@
 #!/bin/bash
 DPIDDD=$$
-echo $DPIDDD > /root/lscript/dpiddd.txt
+echo $DPIDDD > /root/qscript/dpiddd.txt
 i=1
 delay="$Del"
 if [[ "$delay" == "" ]]
@@ -54,7 +54,7 @@ do
 done
 if [[ -f "$LPATH"/dpidd.txt ]]
 then
-	read DPID2 < /root/lscript/dpidd.txt
+	read DPID2 < /root/qscript/dpidd.txt
 	kill -INT $DPID2
 fi
 exit

@@ -16,7 +16,7 @@ PAKTGB="Press "$YS"any key$CE to go back..."
 
 ####################################
 printf '\033]2;PACKET INJECTION\a'
-WLANNM=$(cat /root/lscript/wlanmon.txt)
+WLANNM=$(cat /root/qscript/wlanmon.txt)
 export WLANNM
 while true
 do

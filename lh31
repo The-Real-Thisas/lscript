@@ -16,7 +16,7 @@ PAKTGB="Press "$YS"any key$CE to go back..."
 
 ####################################
 printf '\033]2;REAVER\a' &&
-WLANNM=$(cat /root/lscript/wlanmon.txt)
+WLANNM=$(cat /root/qscript/wlanmon.txt)
 export WLANNM
 if [[ "$GLV" = "2" ]]
 then

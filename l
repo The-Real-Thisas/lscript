@@ -11,8 +11,8 @@ cd
 #############DEFAULTS###############
 function defaults_l
 {
-#path for lscript
-	LPATH="/root/lscript"
+#path for qscript
+	LPATH="/root/qscript"
 	export LPATH
 #path for keyboard shortcuts
 	KSPATH=""$LPATH"/ks"
@@ -277,7 +277,7 @@ function banner
 {
 	check_wlans
 	echo -e ""
-	echo -e "$COL        ██████╗ ██████╗ ███╗   ██╗████████╗██████╗  ██████╗ ██╗     $CE v$VERSION"
+	echo -e "$COL        ██████╗ ██████╗ ███╗   ██╗████████╗██████╗  ██████╗ ██╗     $CE $VERSION"
         echo -e "$COL       ██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔══██╗██╔═══██╗██║     $CE"
         echo -e "$COL       ██║     ██║   ██║██╔██╗ ██║   ██║   ██████╔╝██║   ██║██║     $CE By "$COL"Thisas_Ranhiru_Samaraweera$CE"
         echo -e "$COL       ██║     ██║   ██║██║╚██╗██║   ██║   ██╔══██╗██║   ██║██║     $CE"
@@ -531,7 +531,7 @@ then
 	mkdir "$KSPATH"/"$TITLE"
 fi
 clear
-echo -e "Enter the keyboard shortcut that will open "$TITLE" from lscript's main menu"
+echo -e "Enter the keyboard shortcut that will open "$TITLE" from qscript's main menu"
 echo -e "(e.g: "$YS""$TITLE""$CE")"
 echo -e "To delete it , type:   "$YS"delete"$CE""
 echo -e ""$YS" b"$CE") Go back"
@@ -1841,7 +1841,7 @@ do
 	echo -e "-----------------Basic options-----------------"
 	echo -e ""$YS" 1"$CE") Specify your hash(es)        CURRENT:$HASH"
 	echo -e ""$YS" 2"$CE") Crack/verify                 CURRENT:$CORV"
-	if [[ -f /root/lscript/hashlog.txt ]]
+	if [[ -f /root/qscript/hashlog.txt ]]
 	then
 		echo -e ""$YS" 3"$CE") View your last log"
 	else
@@ -2015,12 +2015,12 @@ do
 		fi
 	elif [[ "$DAGON" = 3 ]]
 	then
-		if [[ ! -f /root/lscript/hashlog.txt ]]
+		if [[ ! -f /root/qscript/hashlog.txt ]]
 		then
 			echo -e ""$RS"No log found."$CE""
 			sleep 2
 		else
-			cat /root/lscript/hashlog.txt
+			cat /root/qscript/hashlog.txt
 			echo -e "$PAKTGB"
 			$READAK
 		fi
@@ -6267,13 +6267,13 @@ function metasploit_menu
 	fi
 	done
 }
-function update_lscript
+function update_qscript
 {
 	echo -e "Checking for updates..."
 	TESTINTERNETCONNECTION=$(curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//')
 	if [[ "$TESTINTERNETCONNECTION" != "" ]]
 	then
-		VER=$(timeout -s SIGTERM 20 curl "https://raw.githubusercontent.com/arismelachroinos/lscript/master/version.txt" 2>/dev/null)
+		VER=$(timeout -s SIGTERM 20 curl "https://raw.githubusercontent.com/arismelachroinos/qscript/master/version.txt" 2>/dev/null)
 		if [[ "$VERSION" != "$VER" ]]
 		then
 			clear
@@ -6288,54 +6288,54 @@ function update_lscript
 			if [[ "$UPDATEYN" = "y" ]]
 			then
 				clear
-				#~ echo -e "Making new directory for the old lscript (will pass it to /root/lscriptold)"
+				#~ echo -e "Making new directory for the old qscript (will pass it to /root/qscriptold)"
 				sleep 1
-				if [[ -d /root/lscriptold ]]
+				if [[ -d /root/qscriptold ]]
 				then
-					rm -r /root/lscriptold
+					rm -r /root/qscriptold
 				fi
-				mkdir /root/lscriptold
+				mkdir /root/qscriptold
 				echo -e ""
-				#~ echo -e "Moving lscript to lscriptold"
+				#~ echo -e "Moving qscript to qscriptold"
 				sleep 1
-				mv "$LPATH" /root/lscriptold
+				mv "$LPATH" /root/qscriptold
 				#~ echo -e "Cloning the latest github version to new "$LPATH""
 				sleep 1
 				cd
-				git clone https://github.com/arismelachroinos/lscript.git
+				git clone https://github.com/arismelachroinos/qscript.git
 				cd "$LPATH"
 				chmod +x install.sh
 				clear
 				sleep 1
-				if [[ -f /root/lscriptold/lscript/IAGREE.txt ]]
+				if [[ -f /root/qscriptold/qscript/IAGREE.txt ]]
 				then
-					cp /root/lscriptold/lscript/IAGREE.txt "$LPATH"
+					cp /root/qscriptold/qscript/IAGREE.txt "$LPATH"
 				fi
-				if [[ -d /root/lscriptold/lscript/ks ]]
+				if [[ -d /root/qscriptold/qscript/ks ]]
 				then
 					echo -e "Copying your shortcuts"
-					cp -r /root/lscriptold/lscript/ks "$LPATH"
+					cp -r /root/qscriptold/qscript/ks "$LPATH"
 					echo -e "Done."
 					sleep 0.2
 				fi
-				if [[ -d /root/lscriptold/lscript/settings ]]
+				if [[ -d /root/qscriptold/qscript/settings ]]
 				then
 					echo -e "Copying your settings"
-					cp -r /root/lscriptold/lscript/settings "$LPATH"
+					cp -r /root/qscriptold/qscript/settings "$LPATH"
 					echo -e "Done."
 					sleep 0.2
 				fi
-				if [[ -f /root/lscriptold/lscript/wlanmon.txt ]]
+				if [[ -f /root/qscriptold/qscript/wlanmon.txt ]]
 				then
 					echo -e "Copying your interfaces"
-					cp /root/lscriptold/lscript/wlanmon.txt "$LPATH"
+					cp /root/qscriptold/qscript/wlanmon.txt "$LPATH"
 					echo -e "Done."
 					sleep 0.2
 				fi
 				echo -e ""
-				if [[ -f /root/lscriptold/lscript/wlan.txt ]]
+				if [[ -f /root/qscriptold/qscript/wlan.txt ]]
 				then
-					cp /root/lscriptold/lscript/wlan.txt "$LPATH"
+					cp /root/qscriptold/qscript/wlan.txt "$LPATH"
 					echo -e "Done."
 					sleep 0.2
 					clear
@@ -6346,7 +6346,7 @@ function update_lscript
 				gnome-terminal -e ./install.sh
 				clear 
 				sleep 1
-				rm -rf /root/lscriptold
+				rm -rf /root/qscriptold
 				echo -e "Exiting..."
 				sleep 1
 				kill -9 $PPID
@@ -6388,7 +6388,7 @@ function hidden_shortcuts
 	echo -e ""$YS"     wififb"$CE") Create open wifi access point and get fb passwords with wifiphisher"
 	echo -e ""$YS"eternalblue"$CE") Launch msfconsole with eternalblue exploit on target"
 	echo -e ""$YS"  etercheck"$CE") Check if a target is vulnerable to eternalblue exploit"
-	echo -e ""$YS"  changelog"$CE") View the changelog of the lscript versions"
+	echo -e ""$YS"  changelog"$CE") View the changelog of the qscript versions"
 	echo -e ""$YS"     pstart"$CE") Service postgresql start"
 	echo -e ""$YS"      pstop"$CE") Service postgresql stop"
 	echo -e ""$YS"     nstart"$CE") Service network-manager start"
@@ -6516,7 +6516,7 @@ function tools_menu
 			echo -e ""
 			echo -e ""$BS"Do you want another tool to be added in the script?"$CE""
 			echo -e ""$BS"Submit it as an issue on my github repo:"$CE""
-			echo -e "	"$YS"https://github.com/arismelachroinos/lscript"$CE""
+			echo -e "	"$YS"https://github.com/arismelachroinos/qscript"$CE""
 			echo -e ""
 			echo -e ""
 			echo -e "$PAKTGB"
@@ -6715,23 +6715,23 @@ while true
 do
 	sm=0
 	clear
-	if [[ ! -d /bin/lscript/smtp ]]
+	if [[ ! -d /bin/qscript/smtp ]]
 	then
-		mkdir /bin/lscript/smtp
+		mkdir /bin/qscript/smtp
 	fi
 	echo -e ""$RS"YOU SHOULD FIRST SIGN UP ON https://www.smtp2go.com AND VERIFY YOUR EMAIL."$CE""
 	echo -e ""$RS"THEN GO TO https://app.smtp2go.com/settings/users AND MAKE A USERNAME AND PASS."$CE""
 	echo -e ""$RS"      ########ALWAYS HAVE PERMISSION OF THE EMAILS YOU SPOOF########"$CE""
 	echo -e ""$RS"      ########DONT SEND VIRUSES , PHISHING OR ILLEGAL THINGS########"$CE""
-	if [[ ! -f /bin/lscript/smtp/smtpemail.txt ]]
+	if [[ ! -f /bin/qscript/smtp/smtpemail.txt ]]
 	then
 		echo -e ""$YS" 1"$CE") Set your SMTP username and pass     "$RS"NOT SET"$CE""
 	else
-		read smtpemail < /bin/lscript/smtp/smtpemail.txt
+		read smtpemail < /bin/qscript/smtp/smtpemail.txt
 		echo -e ""$YS" 1"$CE") Set your SMTP username and pass     Current: "$YS""$smtpemail""$CE""
 	fi
 	echo -e ""$YS" 2"$CE") Send a spoofed email"
-	echo -e ""$YS" 3"$CE") Clear your SMTP username and pass from lscript"
+	echo -e ""$YS" 3"$CE") Clear your SMTP username and pass from qscript"
 	echo -e ""$YS" 4"$CE") Fix email failed"
 	echo -e ""$YS" b"$CE") Go back"
 	echo -e ""$YS" 0"$CE") EXIT"
@@ -6744,9 +6744,9 @@ do
 		echo -e "Enter your smtp password(find it here: https://app.smtp2go.com/settings/users ): "
 		read SMTPPASS
 		clear
-		echo "$SMTPEMAIL" > /bin/lscript/smtp/smtpemail.txt
-		echo "$SMTPPASS" > /bin/lscript/smtp/smtppass.txt 
-		echo -e "Credentials saved on /bin/lscript/smtp"
+		echo "$SMTPEMAIL" > /bin/qscript/smtp/smtpemail.txt
+		echo "$SMTPPASS" > /bin/qscript/smtp/smtppass.txt 
+		echo -e "Credentials saved on /bin/qscript/smtp"
 		sleep 3
 	elif [[ "$SMTP" = "4" ]]
 	then
@@ -6757,16 +6757,16 @@ do
 		read -e -n 1 -r
 	elif [[ "$SMTP" = "3" ]]
 	then
-		if [[ -f /bin/lscript/smtp/smtpemail.txt ]]
+		if [[ -f /bin/qscript/smtp/smtpemail.txt ]]
 		then
-			rm /bin/lscript/smtp/smtpemail.txt
+			rm /bin/qscript/smtp/smtpemail.txt
 			echo -e "Username removed"
 		else
 			echo -e "Not username found"
 		fi
-		if [[ -f /bin/lscript/smtp/smtppass.txt ]]
+		if [[ -f /bin/qscript/smtp/smtppass.txt ]]
 		then
-			rm /bin/lscript/smtp/smtppass.txt
+			rm /bin/qscript/smtp/smtppass.txt
 			echo -e "Password removed"
 		else
 			echo -e "Not password found"
@@ -6786,12 +6786,12 @@ do
 		while true
 		do
 		clear
-		if [[ ! -f /bin/lscript/smtp/smtpemail.txt ]]
+		if [[ ! -f /bin/qscript/smtp/smtpemail.txt ]]
 		then
 			echo -e "No smtp username found."
 			sm=1
 		fi
-		if [[ ! -f /bin/lscript/smtp/smtppass.txt ]]
+		if [[ ! -f /bin/qscript/smtp/smtppass.txt ]]
 		then
 			echo -e "No smtp pass found."
 			sm=1
@@ -6800,8 +6800,8 @@ do
 		then
 			break
 		fi
-		read smtppass < /bin/lscript/smtp/smtppass.txt
-		read smtpemail < /bin/lscript/smtp/smtpemail.txt
+		read smtppass < /bin/qscript/smtp/smtppass.txt
+		read smtpemail < /bin/qscript/smtp/smtpemail.txt
 		clear
 		echo -e "Your username is "$RS""$smtpemail""$CE""
 		echo -e ""
@@ -7108,9 +7108,9 @@ function wififb_pass
 }
 function sqlmap_menu
 {
-file2="/root/lscript/sqltemp2"
-file3="/root/lscript/sqltemp3"
-file4="/root/lscript/sqltemp34"
+file2="/root/qscript/sqltemp2"
+file3="/root/qscript/sqltemp3"
+file4="/root/qscript/sqltemp34"
 while true
 do
 	clear
@@ -7531,7 +7531,7 @@ do
 			sleep 2
 			continue
 		fi
-		file="/root/lscript/sqltemp"
+		file="/root/qscript/sqltemp"
 		sqlmap -u "$URL" --dbs <<< $'\n\n\n\n\n\n\n\n\n\n' | tee "$file"
 		##Find the line
 		CHECK=$(cat "$file" | grep "available databases ")
@@ -7608,7 +7608,7 @@ function cromos_menu
 	if [[ ! -d /root/cromos ]]
 	then
 		echo -e ""$RS"Cromos directory was not found on /root"$CE""
-		echo -e ""$RS"Fix this issue by installing it within lscript"$CE""
+		echo -e ""$RS"Fix this issue by installing it within qscript"$CE""
 		echo -e "$PAKTGB"
 		$READAK
 	else
@@ -8211,7 +8211,7 @@ function donate_option
 	dash_calc
 	printf '\033]2;DONATION\a'
 	echo -e "If you found my script useful, you can buy me a coffee :)"
-	echo -e ""$LBS"Total lscript donations:"$CE" $DONATIONS"
+	echo -e ""$LBS"Total qscript donations:"$CE" $DONATIONS"
 	echo -e ""$YS" 1"$CE") Open browser to donate"
 	echo -e ""$YS" 2"$CE") Copy donation link"
 	echo -e ""$YS" b"$CE") I don't care about your work! :P"
@@ -8264,7 +8264,7 @@ function ngrok_option
 				echo -e "   Go to https://ngrok.com and choose "$YS"sign up"$CE"."
 				echo -e "   When that's done, copy the given "$YS"authtoken"$CE"."
 				echo -e "   (If you can't find it go to: https://dashboard.ngrok.com/auth )"
-				echo -e "   Then select the 'set your authtoken' option in lscript, and paste it."
+				echo -e "   Then select the 'set your authtoken' option in qscript, and paste it."
 				echo -e "---to make a reverse tcp payload:"
 				echo -e "   You need to set the payload to: windows/meterpreter/reverse_tcp_dns"
 				echo -e "$PAKTGB"
@@ -8489,7 +8489,7 @@ do
 	ZERO=$(give_ip_take_zero $LLL)
 	export ZERO
 	echo -e ""$BS"Scanning, please wait..."$CE""
-	tempfile="/root/lscript/tempscan.txt"
+	tempfile="/root/qscript/tempscan.txt"
 	xterm -geometry 1x1+9999+999999 -e "arp-scan -I "$IPF" "$ZERO"/24 | tee $tempfile"
 	#gnome-terminal -- arp-scan -I "$IPF" "$ZERO"/24 | tee $tempfile
 	clear
@@ -9452,7 +9452,7 @@ function main_options
 		exec bash "$0"
 	elif [[ "$YORNAA" = "gg" ]]
 	then
-		geany /bin/lscript/l
+		geany /bin/qscript/l
 	elif [[ "$YORNAA" = "1" ]]
 	then
 		enable_wlan
@@ -9633,7 +9633,7 @@ function main_options
 	then
 		printf '\033]2;UPDATE\a'
 		clear
-		update_lscript
+		update_qscript
 	elif [[ "$YORNAA" = "if" || "$YORNAA" = "ifconfig" ]]
 	then
 		ifconfig

